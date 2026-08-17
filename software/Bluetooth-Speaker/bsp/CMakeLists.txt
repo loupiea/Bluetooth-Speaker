@@ -1,0 +1,28 @@
+idf_component_register(
+    SRCS
+        "src/app_state.c"
+        "../ai/src/ai_music_control.c"
+        "../ai/src/ai_music_library.c"
+        "../ai/src/ai_voice.c"
+        "../ai/src/xiaozhi_audio_stream.c"
+        "../ai/src/xiaozhi_client.c"
+        "../ai/src/xiaozhi_protocol.c"
+        "../ai/src/xiaozhi_tts_player.c"
+        "src/audio_input.c"
+        "src/audio_http_player.c"
+        "src/audio_music_player.c"
+        "src/audio_opus.c"
+        "src/audio_output.c"
+        "src/audio_player.c"
+        "src/audio_prompt.c"
+        "src/audio_recorder.c"
+        "src/buttons.c"
+        "src/i2c_bus.c"
+        "src/oled_display.c"
+        "src/paj7620.c"
+        "src/storage_sd.c"
+        "src/voice_wakeup.c"
+        "../wifi/src/wifi_manager.c"
+    INCLUDE_DIRS "include" "../ai/include" "../wifi/include"
+    REQUIRES bt esp-sr esp_app_format esp_audio_codec esp_common esp_driver_gpio esp_driver_i2c esp_driver_i2s esp_driver_sdmmc esp_http_client esp_netif esp_ringbuf esp_websocket_client esp_wifi fatfs freertos json log nvs_flash sdmmc spi_flash wifi_provisioning
+)

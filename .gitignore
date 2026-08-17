@@ -1,0 +1,46 @@
+/*
+!/.gitignore
+!/README.md
+!/hardware/
+!/hardware/**
+!/software/
+!/software/**
+!/方案计划/
+!/方案计划/**
+
+# Personal documents and large media
+*.docx
+*.pdf
+*.zip
+*.mp3
+*.wav
+*.flac
+*.m4a
+*.aac
+*.mp4
+
+# Temporary/test material
+/test/
+/resume_qa*/
+
+# Build and editor artifacts
+**/build/
+**/dist/
+**/out/
+**/.vscode/
+**/__pycache__/
+*.pyc
+*.log
+# Local resume-editing and QA intermediates
+**/resume_qa*/
+**/resume_target_qa/
+**/.render_docx_fixed.py
+**/inspect_resumes.py
+**/update_resumes_latest.py
+**/verify_resume_text.py
+**/tools/update_target_resume.py
+**/tools/verify_target_resume.py
+# Duplicate/local-only project material
+/software/Bluetooth-Speaker/hardware/
+/software/Bluetooth-Speaker/docs/superpowers/
+/software/test/

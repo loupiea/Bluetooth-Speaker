@@ -1,0 +1,330 @@
+menu "Smart Speaker Configuration"
+
+    config SMART_SPEAKER_I2C_SDA_GPIO
+        int "I2C SDA GPIO"
+        range 0 48
+        default 8
+        help
+            GPIO used as the shared I2C SDA line for SSD1306 and PAJ7620.
+
+    config SMART_SPEAKER_I2C_SCL_GPIO
+        int "I2C SCL GPIO"
+        range 0 48
+        default 9
+        help
+            GPIO used as the shared I2C SCL line for SSD1306 and PAJ7620.
+
+    config SMART_SPEAKER_BUTTON_MAIN_GPIO
+        int "Main button GPIO"
+        range 0 48
+        default 4
+        help
+            Falling-edge button for main function, wake, confirm, or play/pause.
+
+    config SMART_SPEAKER_BUTTON_BACK_MUTE_GPIO
+        int "Back/mute button GPIO"
+        range 0 48
+        default 5
+        help
+            Falling-edge button for back, cancel, or mute.
+
+    config SMART_SPEAKER_BUTTON_VOLUME_UP_GPIO
+        int "Volume up button GPIO"
+        range 0 48
+        default 6
+        help
+            Falling-edge button for volume up.
+
+    config SMART_SPEAKER_BUTTON_VOLUME_DOWN_GPIO
+        int "Volume down button GPIO"
+        range 0 48
+        default 7
+        help
+            Falling-edge button for volume down.
+
+    config SMART_SPEAKER_BUTTON_GUARD_MS
+        int "Button repeated interrupt guard in ms"
+        range 0 1000
+        default 120
+        help
+            Ignore repeated interrupts from the same button within this time window.
+
+    config SMART_SPEAKER_BUTTON_CONFIRM_MS
+        int "Button press confirmation delay in ms"
+        range 0 200
+        default 20
+        help
+            After a falling edge, wait this long and confirm the GPIO is still low.
+
+    config SMART_SPEAKER_BUTTON_LONG_PRESS_MS
+        int "Button long press threshold in ms"
+        range 300 10000
+        default 2000
+        help
+            Hold duration used to turn the main button into a long-press action.
+
+    config SMART_SPEAKER_OLED_I2C_ADDR
+        hex "SSD1306 OLED I2C address"
+        default 0x3C
+        help
+            7-bit I2C address for the SSD1306 OLED module.
+
+    config SMART_SPEAKER_INMP441_BCLK_GPIO
+        int "INMP441 BCLK GPIO"
+        range 0 48
+        default 16
+        help
+            I2S bit clock GPIO for the INMP441 microphone.
+
+    config SMART_SPEAKER_INMP441_LRCLK_GPIO
+        int "INMP441 LRCLK/WS GPIO"
+        range 0 48
+        default 17
+        help
+            I2S word-select GPIO for the INMP441 microphone.
+
+    config SMART_SPEAKER_INMP441_DIN_GPIO
+        int "INMP441 data input GPIO"
+        range 0 48
+        default 18
+        help
+            ESP32-S3 input GPIO connected to INMP441 SD/DOUT.
+
+    config SMART_SPEAKER_INMP441_SAMPLE_RATE_HZ
+        int "INMP441 sample rate in Hz"
+        range 8000 48000
+        default 16000
+        help
+            I2S RX sample rate used for microphone validation.
+
+    config SMART_SPEAKER_MAX98357A_BCLK_GPIO
+        int "MAX98357A BCLK GPIO"
+        range 0 48
+        default 11
+        help
+            I2S bit clock GPIO for the MAX98357A amplifier.
+
+    config SMART_SPEAKER_MAX98357A_LRCLK_GPIO
+        int "MAX98357A LRCLK/WS GPIO"
+        range 0 48
+        default 12
+        help
+            I2S word-select GPIO for the MAX98357A amplifier.
+
+    config SMART_SPEAKER_MAX98357A_DOUT_GPIO
+        int "MAX98357A DOUT GPIO"
+        range 0 48
+        default 10
+        help
+            ESP32-S3 I2S data output GPIO connected to MAX98357A DIN.
+
+    config SMART_SPEAKER_AUDIO_OUTPUT_SAMPLE_RATE_HZ
+        int "Audio output sample rate in Hz"
+        range 8000 48000
+        default 16000
+        help
+            I2S TX sample rate used for MAX98357A test tone playback.
+
+    config SMART_SPEAKER_AUDIO_OUTPUT_DEFAULT_VOLUME
+        int "Audio output default volume percent"
+        range 0 100
+        default 5
+        help
+            Initial software volume percentage for generated speaker samples.
+
+    config SMART_SPEAKER_AUDIO_OUTPUT_TEST_TONE_HZ
+        int "Audio output test tone frequency in Hz"
+        range 100 4000
+        default 1000
+        help
+            Frequency used by the MAX98357A hardware test tone.
+
+    config SMART_SPEAKER_MUSIC_DEFAULT_URL
+        string "Default HTTP MP3 music URL"
+        default "http://lubancat.local:8081/music/example.mp3"
+        help
+            Default MP3 URL played from the local computer/NAS HTTP music server.
+
+    config SMART_SPEAKER_RECORDER_SAMPLE_RATE_HZ
+        int "WAV recorder sample rate in Hz"
+        range 8000 48000
+        default 16000
+        help
+            WAV recorder sample rate. Keep this equal to the INMP441 sample rate.
+
+    config SMART_SPEAKER_RECORDER_MAX_SECONDS
+        int "Maximum WAV recording length in seconds"
+        range 1 600
+        default 30
+        help
+            Safety limit for a single recording file.
+
+    config SMART_SPEAKER_SDMMC_CLK_GPIO
+        int "SDMMC CLK GPIO"
+        range 0 48
+        default 14
+        help
+            SDMMC clock GPIO for the local storage card socket.
+
+    config SMART_SPEAKER_SDMMC_CMD_GPIO
+        int "SDMMC CMD GPIO"
+        range 0 48
+        default 21
+        help
+            SDMMC command GPIO for the local storage card socket.
+
+    config SMART_SPEAKER_SDMMC_D0_GPIO
+        int "SDMMC D0 GPIO"
+        range 0 48
+        default 13
+        help
+            SDMMC data 0 GPIO for 1-bit mode.
+
+    config SMART_SPEAKER_SDMMC_CD_GPIO
+        int "SDMMC card detect GPIO"
+        range 0 48
+        default 38
+        help
+            Card detect GPIO from the SD card socket.
+
+    config SMART_SPEAKER_SDMMC_MOUNT_POINT
+        string "SDMMC FAT mount point"
+        default "/sdcard"
+        help
+            VFS path where the SD card FAT filesystem is mounted.
+
+    config SMART_SPEAKER_XIAOZHI_ENABLE
+        bool "Enable XiaoZhi device WebSocket protocol"
+        default y
+        help
+            Enable the XiaoZhi device WebSocket connection. The client first
+            asks the OTA endpoint for the current device WebSocket URL and token.
+
+    config SMART_SPEAKER_XIAOZHI_OTA_URL
+        string "XiaoZhi OTA discovery URL"
+        default "https://api.tenclass.net/xiaozhi/ota/"
+        help
+            Official device discovery endpoint. It returns the current
+            websocket.url and websocket.token used by the voice protocol.
+
+    config SMART_SPEAKER_XIAOZHI_DIRECT_WS_URL
+        string "XiaoZhi direct WebSocket URL override"
+        default ""
+        help
+            Optional direct device WebSocket URL for private deployments. Leave
+            empty to use SMART_SPEAKER_XIAOZHI_OTA_URL.
+
+    config SMART_SPEAKER_XIAOZHI_DIRECT_TOKEN
+        string "XiaoZhi direct token override"
+        default ""
+        help
+            Optional Bearer token paired with SMART_SPEAKER_XIAOZHI_DIRECT_WS_URL.
+            Leave empty when using OTA discovery.
+
+    config SMART_SPEAKER_XIAOZHI_AUTO_START
+        bool "Auto-start XiaoZhi after Wi-Fi connects"
+        default y
+        help
+            Start the XiaoZhi WebSocket probe automatically after Wi-Fi connects.
+
+    config SMART_SPEAKER_XIAOZHI_TIMEOUT_MS
+        int "XiaoZhi WebSocket network timeout in ms"
+        range 1000 60000
+        default 15000
+        help
+            Network timeout used by the XiaoZhi WebSocket client.
+
+    config SMART_SPEAKER_VOICE_WAKEUP_ENABLE
+        bool "Enable WakeNet voice wakeup"
+        default y
+        help
+            Enable local ESP-SR WakeNet keyword spotting before starting
+            the XiaoZhi listening stream.
+
+    config SMART_SPEAKER_VOICE_WAKEUP_MODEL_PARTITION
+        string "WakeNet model partition label"
+        default "model"
+        depends on SMART_SPEAKER_VOICE_WAKEUP_ENABLE
+        help
+            Partition label passed to esp_srmodel_init. Flash ESP-SR models
+            to this partition before testing voice wakeup.
+
+    config SMART_SPEAKER_VOICE_WAKEUP_TASK_STACK
+        int "WakeNet task stack size"
+        range 4096 32768
+        default 16384
+        depends on SMART_SPEAKER_VOICE_WAKEUP_ENABLE
+        help
+            Stack size for the voice wakeup feed/fetch task.
+
+    config SMART_SPEAKER_VOICE_WAKEUP_TASK_PRIORITY
+        int "WakeNet task priority"
+        range 1 10
+        default 4
+        depends on SMART_SPEAKER_VOICE_WAKEUP_ENABLE
+        help
+            FreeRTOS priority for local WakeNet detection.
+
+    config SMART_SPEAKER_VOICE_WAKEUP_COOLDOWN_MS
+        int "WakeNet wakeup cooldown in ms"
+        range 500 10000
+        default 2500
+        depends on SMART_SPEAKER_VOICE_WAKEUP_ENABLE
+        help
+            Minimum delay after a detected wake word before detecting again.
+
+    config SMART_SPEAKER_WIFI_PROV_SERVICE_NAME
+        string "BLE Wi-Fi provisioning service name"
+        default "SmartSpeaker"
+        help
+            BLE device name advertised while waiting for phone-assisted Wi-Fi provisioning.
+
+    config SMART_SPEAKER_WIFI_PROV_POP
+        string "BLE Wi-Fi provisioning proof of possession"
+        default "change-me"
+        help
+            Proof-of-possession string used by ESP-IDF Wi-Fi provisioning security 1.
+            Replace this public example value before deploying a device.
+
+    config SMART_SPEAKER_PAJ7620_I2C_ADDR
+        hex "PAJ7620 I2C address"
+        default 0x73
+        help
+            7-bit I2C address for the PAJ7620 gesture sensor.
+
+    config SMART_SPEAKER_PAJ7620_I2C_FREQ_HZ
+        int "PAJ7620 I2C clock frequency"
+        range 10000 400000
+        default 100000
+        help
+            PAJ7620 I2C clock in Hz. 100 kHz is conservative for short jumper wires.
+
+    config SMART_SPEAKER_PAJ7620_INT_GPIO
+        int "PAJ7620 interrupt GPIO"
+        range 0 48
+        default 15
+        help
+            Falling-edge interrupt GPIO connected to PAJ7620 INT.
+
+    config SMART_SPEAKER_PAJ7620_POWER_ON_DELAY_MS
+        int "PAJ7620 power-on delay in ms"
+        range 0 3000
+        default 100
+        help
+            Delay before the first PAJ7620 register access after MCU boot.
+
+    config SMART_SPEAKER_PAJ7620_RECOVERY_RETRY_MS
+        int "PAJ7620 background recovery retry interval in ms"
+        range 100 5000
+        default 500
+        help
+            Delay between background PAJ7620 init attempts when the sensor is not ready after battery power-on.
+
+    config SMART_SPEAKER_OLED_REFRESH_MS
+        int "OLED refresh period in ms"
+        range 100 10000
+        default 500
+        help
+            OLED status screen refresh interval.
+
+endmenu
