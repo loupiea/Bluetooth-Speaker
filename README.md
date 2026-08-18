@@ -13,6 +13,19 @@ An ESP-IDF smart-speaker project built around the ESP32-S3, with an INMP441 digi
 - OLED status display, button controls, and PAJ7620 gesture controls
 - FreeRTOS event queue and state-based audio-source arbitration
 
+## Hardware prototype
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/images/esp32-s3-ai-speaker-front.jpg" alt="ESP32-S3 AI smart speaker assembled PCB front" width="480"></td>
+    <td align="center"><img src="docs/images/esp32-s3-ai-speaker-back.jpg" alt="ESP32-S3 AI smart speaker PCB back" width="480"></td>
+  </tr>
+  <tr>
+    <td align="center">Front assembly: ESP32-S3, OLED, PAJ7620 and controls</td>
+    <td align="center">Back side: soldering and MicroSD/TF card socket</td>
+  </tr>
+</table>
+
 ## Repository layout
 
 ```text

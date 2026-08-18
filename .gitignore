@@ -1,6 +1,9 @@
 /*
 !/.gitignore
 !/README.md
+!/docs/
+!/docs/images/
+!/docs/images/*.jpg
 !/hardware/
 !/hardware/**
 !/software/
