@@ -26,6 +26,34 @@ An ESP-IDF smart-speaker project built around the ESP32-S3, with an INMP441 digi
   </tr>
 </table>
 
+## Hardware design
+
+### PCB layout
+
+<table>
+  <tr>
+    <td align="center"><a href="docs/images/pcb-layout-top.png"><img src="docs/images/pcb-layout-top.png" alt="PCB top-layer layout" width="480"></a></td>
+    <td align="center"><a href="docs/images/pcb-layout-bottom.png"><img src="docs/images/pcb-layout-bottom.png" alt="PCB bottom-layer layout" width="480"></a></td>
+  </tr>
+  <tr>
+    <td align="center">Top-layer layout</td>
+    <td align="center">Bottom-layer layout</td>
+  </tr>
+</table>
+
+### Schematics
+
+<table>
+  <tr>
+    <td align="center"><a href="docs/images/schematic-mcu-audio-peripherals.png"><img src="docs/images/schematic-mcu-audio-peripherals.png" alt="MCU, audio and peripheral schematic" width="480"></a></td>
+    <td align="center"><a href="docs/images/schematic-power-management.png"><img src="docs/images/schematic-power-management.png" alt="Power-management schematic" width="480"></a></td>
+  </tr>
+  <tr>
+    <td align="center">MCU, audio and peripheral interfaces</td>
+    <td align="center">USB-C, charging and power management</td>
+  </tr>
+</table>
+
 ## Repository layout
 
 ```text

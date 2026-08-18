@@ -4,6 +4,7 @@
 !/docs/
 !/docs/images/
 !/docs/images/*.jpg
+!/docs/images/*.png
 !/hardware/
 !/hardware/**
 !/software/
